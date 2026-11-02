@@ -1,0 +1,43 @@
+/* Layout fixes for native Filament components, scoped only to ServicesDashboard.
+   Keep the project's existing card typography, colors, padding, and icons. */
+[data-monitoring-dashboard="services"] .fi-wi-stats-overview-stats-ctn {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: stretch;
+}
+
+[data-monitoring-dashboard="services"] .fi-wi-stats-overview-stat {
+    min-width: 0;
+}
+
+[data-monitoring-dashboard="services"] .fi-wi-stats-overview-stat-value {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+    [data-monitoring-dashboard="services"] .fi-wi-stats-overview-stats-ctn {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    [data-monitoring-dashboard="services"] .fi-wi-stats-overview-stats-ctn {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Restore the native chart's section when the host theme makes sections transparent.
+   Override these variables in the host theme to match its table surface exactly. */
+[data-monitoring-dashboard="services"] .fi-wi-chart > .fi-section {
+    background: var(--monitoring-chart-background, #fff) !important;
+    border: var(--monitoring-chart-border, 1px solid rgb(17 24 39 / 8%)) !important;
+    border-radius: var(--monitoring-chart-radius, 1rem) !important;
+    box-shadow: var(--monitoring-chart-shadow, 0 1px 3px rgb(17 24 39 / 8%)) !important;
+}
+
+.dark [data-monitoring-dashboard="services"] .fi-wi-chart > .fi-section,
+.dark[data-monitoring-dashboard="services"] .fi-wi-chart > .fi-section {
+    background: var(--monitoring-chart-dark-background, #111827) !important;
+    border: var(--monitoring-chart-dark-border, 1px solid rgb(255 255 255 / 10%)) !important;
+}
